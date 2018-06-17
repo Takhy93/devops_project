@@ -1,12 +1,6 @@
 import random
 import unittest
 
-class RandomTest(unittest.TestCase):
-  def test_choice(self):
-    liste = list(range(10))
-    elt = random.choice(liste)
-    self.assertIn(elt, liste)
-
 def add(x, y):
   return x + y
   
@@ -35,8 +29,7 @@ class Test(unittest.TestCase):
     self.assertEqual(res, 4)
   def test_div(self) :
     res = divide(4,2)
-    assert res == 2
-    self.assertEqual(res, 1)
+    self.assertEqual(res-1, 2)
 
 
 if __name__ == '__main__':
