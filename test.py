@@ -38,6 +38,6 @@ class Test(unittest.TestCase):
     assert res == 2
     self.assertEqual(res, 1)
 
-unittest.main()
-#calc = Calculator()
-#self.assertEqual(5,5)
+
+if __name__ == '__main__':
+  unittest.main()
