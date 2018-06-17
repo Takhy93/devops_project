@@ -35,7 +35,7 @@ class Test(unittest.TestCase):
     self.assertEqual(res, 4)
   def test_div(self) :
     res = divide(4,2)
-    self.assertEqual(res, 2)
+    self.assertEqual(res, 1)
 
 unittest.main()
 #calc = Calculator()
