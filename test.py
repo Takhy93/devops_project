@@ -11,7 +11,7 @@ class Test(unittest.TestCase):
     self.assertEqual(res, 200)
   def test_list_user(self):
     res = urllib.urlopen("http://127.0.0.1:5000/list_user").getcode()
-    self.assertEqual(res, 200)
+    self.assertEqual(res, 300)
   
 
 if __name__ == '__main__':
