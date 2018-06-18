@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+from sqlalchemy import Column, Integer, String, func
+from sqlalchemy.ext.declarative import declarative_base
+from wtforms import *
+from flask_wtf import *
+from wtforms.validators import *
+from flask import *
+import hashlib
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
+# instancie une app
+
+app = Flask(__name__)
+# in debug mode :P
+app.debug = True
+# secret key contre csrf
+app.secret_key = "secret"
+
+Base = declarative_base()
+class MaBase(Base):
+   __tablename__ = "MaBase"
+   id = Column(Integer, primary_key=True)
+   login = Column(String(50))
+   name = Column(String(50))
+   lastname = Column(String(50))
+   desc = Column(String(1028))
+   def __repr__(self):
+      return "MaBase(id={id}, login={login!r}, lastname={lastname!r}, login={login!r})".format(**vars(self))
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Formulaire(Form):
+   name = TextField('name')
+   lastname = TextField('lastname')
+   login = TextField('login')
+   desc = TextAreaField('desc')
+   
+@app.route("/", methods=['GET', 'POST'])
+def index():
+   return render_template('index.html')
+
+
+
+
+
+
+
+
+@app.route('/add_user', methods = ['POST','GET'])
+def add_user():
+   formu = Formulaire()
+   if (formu.validate_on_submit()):
+      print('ok')
+      session = Session(engine)
+      data = [ MaBase(name=request.form['name'], lastname=request.form['lastname'], login=request.form['login'], desc=request.form['desc'])]
+      session.add_all(data)
+      session.commit()
+      return redirect('/')
+   return render_template('adduser.html', form=formu)
+
+
+
+
+
+
+
+
+
+@app.route("/list_user", methods=['POST', 'GET'])
+def list_user():
+   #session = Session(engine)
+   return render_template('listuser.html', session=session, mabase=MaBase)
+
+
+
+
+
+
+
+
+
+@app.route("/show_user/<int:id_user>", methods=['POST', 'GET'])
+def show_user(id_user):
+   #session = Session(engine)
+   for a in session.query(MaBase):
+      if a.id == id_user:
+         return render_template('showuser.html', user=a)
+
+if __name__ == "__main__":
+       engine = create_engine("sqlite:///./clent.db")
+       Base.metadata.create_all(engine)
+       session = Session(engine)
+       app.run(debug=True)    

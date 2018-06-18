@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>title</title>
+  </head>
+  <body>
+    <div>
+      <a href={{url_for('add_user')}}">listuser</a>
+      <a href={{url_for('add_user')}}>showuser</a>
+      <a href={{url_for('add_user')}}>adduser</a>
+      <div>
+  </body>
+  </html>
