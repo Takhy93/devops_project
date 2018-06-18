@@ -41,7 +41,7 @@ jobs:
 
       - run:
           working_directory: app
-          command: ls
+          command: python3 main
       # run tests!
       # this example uses Django's built-in test-runner
       # other common Python testing frameworks include pytest and nose
