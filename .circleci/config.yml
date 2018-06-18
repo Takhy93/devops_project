@@ -39,9 +39,9 @@ jobs:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
 
-      - run:
-          working_directory: app
-          command: python3 main
+      #- run:
+       #   working_directory: app
+        #  command: python3 main
       # run tests!
       # this example uses Django's built-in test-runner
       # other common Python testing frameworks include pytest and nose
